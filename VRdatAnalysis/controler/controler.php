@@ -25,7 +25,7 @@ function table(){
 }
 
 function tableByUser($userid){
-  $usersLst = getUsers('all');
+  $usersLst = getUsers();
   createJSONfile($userid);
   require 'view/table_vis_view.php';
 }

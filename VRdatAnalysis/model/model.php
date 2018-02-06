@@ -10,13 +10,15 @@ function connexion (){
 function getUsers(){
 	try{
 	$bdd = connexion();
-	$sql = "SELECT username FROM msf_data_test ORDER BY username ASC";
+	$sql = "SELECT DISTINCT username FROM msf_data_test ORDER BY username ASC";
 	$result = mysqli_query($bdd, $sql);
-	//$users = $bdd->prepare("SELECT username FROM msf_data_test ORDER BY username ASC");
-	//$users->execute();
-	//$results = $users->fetch_assoc();
+
 	deconnexion($bdd);
-	return mysqli_fetch_assoc($result);
+
+	while ($rs =mysqli_fetch_assoc($result)) {
+		$name[] = $rs['username'];
+	}
+	return $name;
 	}
 	catch(PDOStatement $e){
 		deconnexion($bdd);

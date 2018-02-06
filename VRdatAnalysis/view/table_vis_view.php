@@ -29,11 +29,11 @@ table.draw(data, {showRowNumber: true, width: '100%', height: '100%'});
       <select name="user" class="form-control" form="sub-menu">
         <option value="all">All</option>
         <?php foreach ($usersLst as $usr): ?>
-          <?php if($usr  == $_POST['user']):?>
-            <option selected value="<?= $usr?>"><?= $usr?></option>
-          <?php else:?>
-            <option value="<?= $usr?>"><?= $usr?></option>
-          <?php endif?>
+          <?php if($usr == $_POST['user']):?>
+            <option selected value=<?= $usr?>><?= $usr?></option>
+          <?php else: ?>
+            <option value=<?= $usr?>><?= $usr?></option>
+          <?php endif ?>
         <?php endforeach ?>
       </select>
     </div>

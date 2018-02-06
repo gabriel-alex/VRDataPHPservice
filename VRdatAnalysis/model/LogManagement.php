@@ -17,6 +17,8 @@ if(! $conn){
 	$rX =0;
 	$rY =0;
 	$rZ =0;
+	$comm = NULL;
+	$username = "default";
 
 	//*** get the data send by Unity through the WWWform method *********
 	$pX =floatval($_POST['px']);
@@ -25,15 +27,15 @@ if(! $conn){
 	$rX =floatval($_POST['rx']);
 	$rY =floatval($_POST['ry']);
 	$rZ =floatval($_POST['rz']);
-	$comm = $_POST['comment'];
-	$username = $_POST['user_id']
+	if(isset($_POST['comment'])) { $comm = $_POST['comment']; }
+	$username = $_POST['user_id'];
 
 
 
 	$stmt = $conn->prepare("INSERT INTO msf_data_test (pos_x,pos_y,pos_z,rot_x,rot_y,rot_z,comment, username) VALUES (?,?,?,?,?,?,?,?)");
 	$stmt->bind_param('ddddddss',$pX,$pY,$pZ, $rX,$rY,$rZ, $comm, $username);
 	$stmt->execute();
-	
+
 }
 deconnexion($conn); // close the connexion to the database
 ?>
